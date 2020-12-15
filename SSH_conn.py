@@ -3,8 +3,6 @@ import sys
 
 import paramiko, time
 
-print("="*40, "System Information", "="*40)
-
 def ssh_conn(ip = None, user = None, pwd = None):
     if ip is None:
         ip = input('[*]Enter Server IP Address :')
@@ -35,5 +33,3 @@ def ssh_conn(ip = None, user = None, pwd = None):
     except:
         print("Unexpected error: ", sys.exc_info())
 
-
-ssh_conn()

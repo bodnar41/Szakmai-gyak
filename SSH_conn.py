@@ -1,7 +1,8 @@
 import socket
 import sys
-
 import paramiko, time
+
+cmd = "python C:/Users/kliens02/info.py"
 
 def ssh_conn(ip = None, user = None, pwd = None):
     if ip is None:
@@ -16,10 +17,9 @@ def ssh_conn(ip = None, user = None, pwd = None):
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         print("Connection..")
         ssh_client.connect(hostname=ip, username=user, password=pwd)
-        cmd = input('[*]Enter Command :')
         print("Command execution..")
         stdin, stdout, stderr = ssh_client.exec_command(cmd)
-        time.sleep(10)
+        time.sleep(5)
         print("Command executed..")
         stdout = stdout.readlines()
         print(stdout)

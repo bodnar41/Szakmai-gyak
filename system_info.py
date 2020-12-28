@@ -49,15 +49,3 @@ if choice == "4":
     with open("C:/Users/kliens02/system_info.json", "w") as file:
         json.dump(coreinfo, file, indent=4)
 
-ip="192.168.2.9"
-user = "kliens01"
-pwd = "Password1"
-
-ssh_client = paramiko.SSHClient()
-ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh_client.connect(hostname=ip, username=user, password=pwd)
-sftp_client = ssh_client.open_sftp()
-sftp_client.put("C:/Users/kliens02/system_info.json", "C:/Users/kliens01/system_info.json")
-print("File transferred")
-sftp_client.close()
-ssh_client.close()

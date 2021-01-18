@@ -33,8 +33,8 @@ while True:
         ip = input("IP address:")
         user = input("Username:")
         pwd = input("Password:")
-        SCP_conn.scp_conn(ip, user, pwd, "put", "qr_maker.py")
-        SSH_conn.ssh_conn(ip, user, pwd, f"python C:/Users/{user}/qr_maker.py")
+        SCP_conn.scp_conn(ip, user, pwd, "put", "QR_maker.py")
+        SSH_conn.ssh_conn(ip, user, pwd, f"python C:/Users/{user}/QR_maker.py")
         SCP_conn.scp_conn(ip, user, pwd, "get", "sysinfo.png")
 
     elif choice == 4:

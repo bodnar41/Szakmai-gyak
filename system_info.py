@@ -3,10 +3,11 @@ from datetime import datetime
 import json
 import paramiko
 
-#Client name
+# Client name
 uname = platform.uname()
 clientname= uname.node.strip('-PC')
 
+# Opening the file which contains the instrucs
 received_data = []
 with open(f"C:/Users/{clientname}/teszt.txt", 'r') as filehandle:
     for line in filehandle:

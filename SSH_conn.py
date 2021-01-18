@@ -5,13 +5,13 @@ import paramiko, time
 
 def ssh_conn(ip = None, user = None, pwd = None, cmd = None):
     if ip is None:
-        ip = input('[*]Enter Server IP Address :')
+        ip = input("Enter Server IP Address:")
     if user is None:
-        user = input('[*]Enter Username :')
+        user = input("Enter Username:")
     if pwd is None:
-        pwd = input('[*]Enter Password :')
+        pwd = input("Enter Password:")
     if cmd is None:
-        cmd = input('[*]Enter command :')
+        cmd = input("Enter command:")
     try:
         print("Creating SSH Client..")
         ssh_client = paramiko.SSHClient()
@@ -27,10 +27,11 @@ def ssh_conn(ip = None, user = None, pwd = None, cmd = None):
         ssh_client.close()
     except paramiko.ssh_exception.AuthenticationException as e:
         print("Username: " + user + "\t or password invalid.")
-        ssh_conn(ip, None, None)
+        ssh_conn(ip, None, None, cmd)
     except socket.gaierror:
         print(ip + " invalid.")
-        ssh_conn(None, user, pwd)
+        ssh_conn(None, user, pwd, cmd)
     except:
         print("Unexpected error: ", sys.exc_info())
+
 

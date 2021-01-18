@@ -2,15 +2,16 @@ import socket
 import sys
 import paramiko, time
 
-cmd = "python C:/Users/kliens02/info.py"
 
-def ssh_conn(ip = None, user = None, pwd = None):
+def ssh_conn(ip = None, user = None, pwd = None, cmd = None):
     if ip is None:
         ip = input('[*]Enter Server IP Address :')
     if user is None:
         user = input('[*]Enter Username :')
     if pwd is None:
         pwd = input('[*]Enter Password :')
+    if cmd is None:
+        cmd = input('[*]Enter command :')
     try:
         print("Creating SSH Client..")
         ssh_client = paramiko.SSHClient()

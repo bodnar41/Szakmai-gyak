@@ -3,12 +3,19 @@ import SSH_conn
 import Encryption
 
 while True:
-    print("1. System info from a remote host.\n2. File encryption and decryption."
-          "\n 3. Making QR code from remote host's system info.")
-    choice = int(input("How can I help you? Give me the number of taks:"))
+    print("1. Check SSH connection.\n2. System info from a remote host.\n3. File encryption and decryption."
+          "\n4. Making QR code from remote host's system info.\n5. Folder cleanup on a remote host.\n0. EXIT")
+    choice = int(input("How can I help you? Give me the number of task:"))
+
+    #Checking SSH connection
+    if choice == 1:
+        ip = input("IP address:")
+        user = input("Username:")
+        pwd = input("Password:")
+        SSH_conn.ssh_conn(ip, user, pwd, None)
 
     #Get sysinfo from a remote computer
-    if choice == 1:
+    elif choice == 2:
         ip = input("IP address:")
         user = input("Username:")
         pwd = input("Password:")
@@ -25,11 +32,12 @@ while True:
         SSH_conn.ssh_conn(ip, user, pwd, f"python C:/Users/{user}/info.py")
         SCP_conn.scp_conn(ip, user, pwd, "get", "system_info.json")
 
-    #Encrypt and decrypt a file
-    elif choice == 2:
+    # Encrypt and decrypt a file
+    elif choice == 3:
         Encryption.call_functions()
 
-    elif choice == 3:
+    #Making QR from remote host's sysinfo
+    elif choice == 4:
         ip = input("IP address:")
         user = input("Username:")
         pwd = input("Password:")
@@ -37,10 +45,18 @@ while True:
         SSH_conn.ssh_conn(ip, user, pwd, f"python C:/Users/{user}/QR_maker.py")
         SCP_conn.scp_conn(ip, user, pwd, "get", "sysinfo.png")
 
-    elif choice == 4:
-        pass
+    #Folder cleanup
     elif choice == 5:
-        pass
+        ip = input("IP address:")
+        user = input("Username:")
+        pwd = input("Password:")
+        SCP_conn.scp_conn(ip, user, pwd, "put", "Folder_cleanup.py.py")
+        SSH_conn.ssh_conn(ip, user, pwd, f"python C:/Users/{user}/Folder_cleanup.py")
+        SCP_conn.scp_conn(ip, user, pwd, "get", "Output.txt")
+        with open("C:/Users/kliens01/Output.txt", 'r') as filehandle:
+            data = filehandle.read()
+            print(data)
+
     elif choice == 6:
         pass
     elif choice == 7:

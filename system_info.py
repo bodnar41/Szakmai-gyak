@@ -17,7 +17,6 @@ with open(f"C:/Users/{clientname}/teszt.txt", 'r') as filehandle:
         # add item to the list
         received_data.append(currentPlace)
 
-# f = open("C:/Users/kliens02/teszt.txt", "r")
 choice = received_data[0]
 user = received_data[1]
 # print(choice)
@@ -30,13 +29,13 @@ if choice == "1":
     sysJSON = json.dumps(sysinfo, indent=4, sort_keys=True)
 
 
-if choice == "2":
+elif choice == "2":
     cpuinfo = {"CPU info": [
         {"Physical cores": psutil.cpu_count(logical=False), "Total cores": psutil.cpu_count(logical=True)}]}
     cpuJSON = json.dumps(cpuinfo, indent=4, sort_keys=True)
 
 
-if choice == "3":
+elif choice == "3":
     cpufreq = psutil.cpu_freq()
     freqinfo = {"Frequency info": [
         {"Max Frequency": str(cpufreq.max) + " Mhz", "Min Frequency": str(cpufreq.min) + " Mhz",
@@ -44,7 +43,7 @@ if choice == "3":
     freqJSON = json.dumps(freqinfo, indent=4, sort_keys=True)
 
 
-if choice == "4":
+elif choice == "4":
     core = []
     for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=2)):
         core.append(percentage)

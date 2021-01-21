@@ -69,4 +69,4 @@ else:
     uname = platform.uname()
     clientname = uname.node.strip('-PC')
     with open(f"C:/Users/{clientname}/Output.txt", "w") as file:
-        file.write("Cleaning up was successful!")
+        file.write("Cleaningup was successful!")

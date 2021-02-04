@@ -23,6 +23,7 @@ class DeviceCreateForm(forms.ModelForm):
 
 
 class DeviceSearchForm(forms.ModelForm):
+   export_to_CSV = forms.BooleanField(required=False)
    class Meta:
      model = Device
      fields = ['device_name', 'category', 'manuf']

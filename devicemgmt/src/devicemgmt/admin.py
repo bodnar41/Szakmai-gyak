@@ -3,7 +3,7 @@ from .forms import DeviceCreateForm
 
 # Register your models here.
 
-from .models import Device
+from .models import *
 
 class DeviceCreateAdmin(admin.ModelAdmin):
    list_display = ['device_name', 'category', 'quantity', 'manuf', 'type', 'guarantee']
@@ -12,3 +12,4 @@ class DeviceCreateAdmin(admin.ModelAdmin):
    search_fields = ['category', 'device_name', 'manuf', 'guarantee']
 
 admin.site.register(Device, DeviceCreateAdmin)
+admin.site.register(Category)

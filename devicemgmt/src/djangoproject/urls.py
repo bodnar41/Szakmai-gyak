@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from devicemgmt import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('list_devices/', views.list_devices, name='list_devices'),
+    path('add_devices/', views.add_devices, name='add_devices'),
+    path('update_devices/<str:pk>/', views.update_devices, name="update_devices"),
+    path('delete_devices/<str:pk>/', views.delete_devices, name="delete_devices"),
+    path('admin/', admin.site.urls)
 ]
+
+

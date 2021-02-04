@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import csv
 from .models import *
 from .forms import DeviceCreateForm, DeviceSearchForm, DeviceUpdateForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -53,12 +54,15 @@ def add_devices(request):
     form = DeviceCreateForm(request.POST or None)
     if form.is_valid():
         form.save()
+        messages.success(request, 'Successfully saved')
         return redirect('/list_devices')
     context = {
         "form": form,
         "title": "Add Device",
     }
     return render(request, "add_devices.html", context)
+
+
 
 def update_devices(request, pk):
 	queryset = Device.objects.get(id=pk)
@@ -67,6 +71,7 @@ def update_devices(request, pk):
 		form = DeviceUpdateForm(request.POST, instance=queryset)
 		if form.is_valid():
 			form.save()
+            
 			return redirect('/list_devices')
 
 	context = {
@@ -75,10 +80,26 @@ def update_devices(request, pk):
 	return render(request, 'add_devices.html', context)
 
 
-def delete_devices(request, pk):
-	queryset = Device.objects.get(id=pk)
-	if request.method == 'POST':
-		queryset.delete()
-		return redirect('/list_devices')
-	return render(request, 'delete_devices.html')
+# def update_devices(request, pk):
+#     queryset = Device.objects.get(id=pk)
+#     form = DeviceUpdateForm(instance=queryset)
+#     if request.method == 'POST':
+#         form = DeviceUpdateForm(request.POST, instance=queryset)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Successfully updated')
+#             return redirect('/list_devices')
+#
+#         context = {
+#             'form':form
+#         }
+#         return render(request, 'add_devices.html', context)
 
+
+def delete_devices(request, pk):
+    queryset = Device.objects.get(id=pk)
+    if request.method == 'POST':
+        queryset.delete()
+        messages.success(request, 'Successfully deleted')
+        return redirect('/list_devices')
+    return render(request, 'delete_devices.html')

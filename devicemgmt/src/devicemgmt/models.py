@@ -1,9 +1,14 @@
 from django.db import models
 
 # Create your models here.
+category_choice = (
+		('Laptop', 'Laptop'),
+		('IT Equipment', 'IT Equipment'),
+	)
+	
 
 class Device(models.Model):
-	category = models.CharField(max_length=50, blank=True, null=True)
+	category = models.CharField(max_length=50, blank=True, null=True, choices=category_choice)
 	device_name = models.CharField(max_length=50, blank=True, null=True)
 	quantity = models.IntegerField(default='0', blank=True, null=True)
 	manuf = models.CharField(max_length=50, blank=True, null=True)

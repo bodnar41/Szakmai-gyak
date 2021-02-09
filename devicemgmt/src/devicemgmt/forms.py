@@ -4,7 +4,7 @@ from .models import Device
 class DeviceCreateForm(forms.ModelForm):
    class Meta:
      model = Device
-     fields = ['device_name', 'category', 'quantity', 'manuf', 'type', 'guarantee']
+     fields = ['device_name', 'category', 'quantity', 'manuf', 'type', 'serial_id',  'guarantee']
 
    def clean_type(self):
        type = self.cleaned_data.get('type')
@@ -26,10 +26,10 @@ class DeviceSearchForm(forms.ModelForm):
    export_to_CSV = forms.BooleanField(required=False)
    class Meta:
      model = Device
-     fields = ['device_name', 'category', 'manuf']
+     fields = ['device_name', 'category', 'manuf', 'serial_id']
 
 
 class DeviceUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Device
-		fields = ['device_name', 'category', 'quantity', 'manuf', 'type', 'guarantee']
+		fields = ['device_name', 'category', 'quantity', 'manuf', 'type', 'serial_id', 'guarantee']

@@ -19,7 +19,8 @@ class Device(models.Model):
 	device_name = models.CharField(max_length=50, blank=True, null=True)
 	quantity = models.IntegerField(default='0', blank=True, null=True)
 	manuf = models.CharField(max_length=50, blank=True, null=True)
-	type= models.CharField(max_length=50, blank=False, null=True)
+	type = models.CharField(max_length=50, blank=False, null=True)
+	serial_id = models.CharField(max_length=50, blank=False, null=True)
 	guarantee = models.DateTimeField(blank=False, null=False)
 	last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 

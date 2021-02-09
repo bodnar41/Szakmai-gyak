@@ -68,7 +68,9 @@
               <th>QUANTITY</th>
               <th>MANUFACTURER</th>
               <th>TYPE</th>
+              <th>SERIAL ID</th>
               <th>GUARANTEE</th>
+              <th>LAST UPDATED</th>
                 <th></th>
             </tr>
           </thead>
@@ -80,7 +82,9 @@
               <td>{{instance.quantity}}</td>
               <td>{{instance.manuf}}</td>
               <td>{{instance.type}}</td>
+              <td>{{instance.serial_id}}</td>
               <td>{{instance.guarantee}}</td>
+              <td>{{instance.last_updated}}</td>
                 <td><a href="{% url 'delete_devices' instance.id %}"><img src="{% static 'img/delete.png' %}"></a></td>
             </tr>
         {% endfor %}

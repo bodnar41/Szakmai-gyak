@@ -36,10 +36,10 @@ def list_devices(request):
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = 'attachment; filename="List of devices.csv"'
             writer = csv.writer(response)
-            writer.writerow(['DEVICE NAME', 'CATEGORY', 'QUANTITY', 'MANUFACTURER', 'TYPE', 'GUARANTEE'])
+            writer.writerow(['DEVICE NAME', 'CATEGORY', 'QUANTITY', 'MANUFACTURER', 'TYPE', 'SERIAL ID', 'GUARANTEE'])
             instance = queryset
             for device in instance:
-                writer.writerow([device.device_name, device.category, device.quantity, device.manuf, device.type, device.guarantee])
+                writer.writerow([device.device_name, device.category, device.quantity, device.manuf, device.type, device.serial_id, device.guarantee])
             return response
 
         context = {

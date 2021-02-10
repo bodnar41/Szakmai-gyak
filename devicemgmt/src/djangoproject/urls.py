@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from devicemgmt import views
+from django.urls import include
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -23,7 +24,8 @@ urlpatterns = [
     path('add_devices/', views.add_devices, name='add_devices'),
     path('update_devices/<str:pk>/', views.update_devices, name="update_devices"),
     path('delete_devices/<str:pk>/', views.delete_devices, name="delete_devices"),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.default.urls')),
 ]
 
 

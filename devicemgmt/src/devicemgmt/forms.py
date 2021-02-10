@@ -6,14 +6,12 @@ class DeviceCreateForm(forms.ModelForm):
      model = Device
      fields = ['device_name', 'category', 'quantity', 'manuf', 'type', 'serial_id',  'guarantee']
 
-   def clean_type(self):
-       type = self.cleaned_data.get('type')
-       if not type:
+   def clean_serial_id(self):
+       serial_id = self.cleaned_data.get('serial_id')
+       if not serial_id:
            raise forms.ValidationError('This field is required')
-       # for instance in Device.objects.all():
-       #     if instance.category == type:
-       #         raise forms.ValidationError(str(type) + ' is already created')
-       return type
+
+       return serial_id
 
    def clean_guarantee(self):
        guarantee = self.cleaned_data.get('guarantee')
@@ -26,10 +24,12 @@ class DeviceSearchForm(forms.ModelForm):
    export_to_CSV = forms.BooleanField(required=False)
    class Meta:
      model = Device
-     fields = ['device_name', 'category', 'manuf', 'serial_id']
+     fields = ['device_name', 'manuf', 'serial_id']
 
 
 class DeviceUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Device
 		fields = ['device_name', 'category', 'quantity', 'manuf', 'type', 'serial_id', 'guarantee']
+
+

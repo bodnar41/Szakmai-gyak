@@ -19,10 +19,10 @@ class Device(models.Model):
 	device_name = models.CharField(max_length=50, blank=True, null=True)
 	quantity = models.IntegerField(default='0', blank=True, null=True)
 	manuf = models.CharField(max_length=50, blank=True, null=True)
-	type = models.CharField(max_length=50, blank=False, null=True)
-	serial_id = models.CharField(max_length=50, blank=False, null=True)
-	guarantee = models.DateTimeField(blank=False, null=False)
+	type = models.CharField(max_length=50, blank=True, null=True)
+	serial_id = models.CharField(max_length=50, blank=True, null=True)
+	guarantee = models.DateTimeField(auto_now_add=False, auto_now=False)
 	last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
 	def __str__(self):
-		return self.device_name + ' ' + str(self.quantity)
+		return self.device_name + ' ' + str(self.serial_id) + ' ' + str(self.guarantee)

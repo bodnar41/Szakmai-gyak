@@ -3,6 +3,7 @@ import SSH_conn
 import Encryption
 
 while True:
+    print("=================== Sysadmin tools ===================")
     print("1. Check SSH connection.\n2. System info from a remote host.\n3. File encryption and decryption."
           "\n4. Making QR code from remote host's system info.\n5. Folder cleanup on a remote host."
           "\n6. Logging on a remote host.\n0. EXIT")

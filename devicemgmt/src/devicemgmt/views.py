@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
-    title = 'Welcome: This is the Home Page'
+    title = 'Welcome! This is the introduction!'
     context = {
         "title": title,
 
